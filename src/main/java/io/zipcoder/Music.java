@@ -12,13 +12,13 @@ public class Music {
 
         int trueIndex = startIndex;
 
-        int forwardSkips = movingForward(startIndex, selection);
+        //int forwardSkips = movingForward(startIndex, selection);
         int backwardSkips = movingBackward(trueIndex, selection);
 
-        if (forwardSkips < backwardSkips ){
-            return forwardSkips;
-        }
-        return backwardSkips;
+//        if (forwardSkips < backwardSkips ){
+//            return forwardSkips;
+//        }
+        return 0;
     }
 
     public Integer movingForward(int startIndex , String selection){
@@ -37,12 +37,13 @@ public class Music {
 
         int movingBackwardCount = 0;
 
+        if (startIndex == 0){
+            startIndex = playList.length - 1;
+            movingBackwardCount += 1;
+        }
+
 
         for (int i = startIndex;  i > 0 || i == 0; i--){
-            if (i == 0){
-                i = playList.length - 1;
-                movingBackwardCount += 1;
-            }
             if (playList[i - 1].equals(selection)){
                 break;
             }
